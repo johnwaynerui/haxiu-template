@@ -1,8 +1,5 @@
 const rp = require('request-promise');
 const opn = require('opn');
-let cache = {
-
-};
 // 只执行一遍的方法
 function once(fn, context) {
     let result;
@@ -41,14 +38,14 @@ function WebpackHttpDeployPlugin() {
             content = Buffer.isBuffer(content) ? content : new Buffer(content);
             // 静态资源和模板文件的存放路径和端口不同
             let to = isResource(name) ? 'resource/webpack-demo/' : '';
-            let port = 8087;
+            let port = {{resourcePort}};
             if (!to) {
                 to = 'smarty/template/page/webpack-demo/';
-                port = 8083;
+                port = {{tplPort}};
             }
             to = to + name;
             return rp.post({
-                url: `{{host}}:${port}/receiver.php`,
+                url: `http://{{host}}:${port}/receiver.php`,
                 formData: {
                     to: to,
                     file: {
