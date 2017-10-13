@@ -3,7 +3,7 @@ module.exports = {
         "host": {
             "type": "string",
             "required": false,
-            "message": "server host"
+            "message": "where is your project gonna deploy?"
         },
         "tplPort": {
             "type": "string",
@@ -14,6 +14,11 @@ module.exports = {
             "type": "string",
             "required": false,
             "message": "port to receive resource"
+        },
+        "site": {
+            "type": "string",
+            "required": false,
+            "message": "site to access your project"
         }
     }
 };

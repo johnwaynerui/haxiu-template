@@ -69,7 +69,7 @@ function WebpackHttpDeployPlugin() {
         Promise.all(promises)
             .then(() => {
                 next();
-                openBrowser('http://www.hao123.com/WebpackDemo');
+                openBrowser('{{site}}');
             });
     }
 }

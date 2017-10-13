@@ -1,15 +1,15 @@
 {
-  "name": "webpack-demo",
+  "name": "{{name}}",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "./src/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "webpack --config ./build/webpack.prod.js",
     "start": "node ./build/server.js"
   },
   "keywords": [],
-  "author": "",
+  "author": "{{author}}",
   "license": "ISC",
   "devDependencies": {
     "babel-core": "^6.26.0",
@@ -38,12 +38,10 @@
     "webpack-bundle-analyzer": "^2.9.0",
     "webpack-dev-middleware": "^1.12.0",
     "webpack-hot-middleware": "^2.19.0",
-    "webpack-merge": "^4.1.0",
-    "webpack-visualizer-plugin": "^0.1.11"
+    "webpack-merge": "^4.1.0"
   },
   "dependencies": {
     "babel-polyfill": "^6.26.0",
-    "lodash": "^4.17.4",
     "vue": "^2.4.2",
     "vue-router": "^2.7.0"
   }
