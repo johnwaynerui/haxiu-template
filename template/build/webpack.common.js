@@ -6,7 +6,7 @@ const config = require('./config.js');
 module.exports = {
     context: path.resolve('./src'),
     entry: {
-        app: './main.js'
+        app: './index.js'
     },
     module: {
         rules:[

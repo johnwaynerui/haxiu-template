@@ -25,8 +25,8 @@ module.exports = merge(common, {
     },
     plugins: [
         new HtmlWebpackPlugin({
-            filename: 'index.html',
-            template: './index.html'
+            filename: 'index.tpl',
+            template: './index.tpl'
         }),
         // 抽取node_modules下公共的模块
         // 避免频繁release一些库文件
