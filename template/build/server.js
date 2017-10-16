@@ -11,7 +11,9 @@ app.use(webpackDevMiddleware(compiler, {
     headers: {
         'Access-Control-Allow-Origin': '*'// 被这个要坑死了快
     },
-    lazy: false
+    lazy: false,
+    index: 'index.tpl',
+    mimeTypes: { "text/html": [ "tpl" ] }
 }));
 // 这个配合client的刷新会导致hmr失效
 // issue: https://github.com/webpack/webpack/issues/5505
