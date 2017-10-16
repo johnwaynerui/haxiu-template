@@ -2,11 +2,21 @@ const path = require('path');
 // const webpack = require('webpack');
 const utils = require('./utils.js');
 const config = require('./config.js');
-
+function resolve (dir) {
+    return path.join(__dirname, '..', dir);
+}
 module.exports = {
     context: path.resolve('./src'),
     entry: {
-        app: './index.js'
+        app: './main.js'
+    },
+    resolve: {
+        extensions: ['.js', '.vue', '.json'],
+        alias: {
+            '@': resolve('src'),
+            'assets': resolve('/src/assets'),
+            'components': resolve('/src/components')
+        }
     },
     module: {
         rules:[

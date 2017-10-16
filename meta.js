@@ -18,7 +18,7 @@ module.exports = {
         "site": {
             "type": "string",
             "required": false,
-            "message": "site to access your project"
+            "message": "site to access your project(e.g: http://www.hao123.com)"
         }
     }
 };

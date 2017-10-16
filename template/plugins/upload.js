@@ -37,15 +37,15 @@ function WebpackHttpDeployPlugin() {
             let content = assets[name].source();
             content = Buffer.isBuffer(content) ? content : new Buffer(content);
             // 静态资源和模板文件的存放路径和端口不同
-            let to = isResource(name) ? 'resource/webpack-demo/' : '';
-            let port = {{resourcePort}};
+            let to = isResource(name) ? 'resource/{{name}}/' : '';
+            let port = 8912;
             if (!to) {
-                to = 'smarty/template/page/webpack-demo/';
-                port = {{tplPort}};
+                to = 'smarty/template/page/{{name}}/';
+                port = 8911;
             }
             to = to + name;
             return rp.post({
-                url: `http://{{host}}:${port}/receiver.php`,
+                url: `http://10.94.173.135:${port}/receiver.php`,
                 formData: {
                     to: to,
                     file: {

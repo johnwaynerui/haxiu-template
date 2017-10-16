@@ -1,14 +1,40 @@
 <template>
 <div id='bd'>
-    <router-link to='/detail'>t detail page</router-link>
-    <router-view></router-view>
+    <app-header></app-header>
+    <transition name="router-switch">
+        <router-view></router-view>
+    </transition>
 </div>
 </template>
 <script>
-    import index from './views/index.vue';
+    import AppHeader from './components/header';
+    import store from './store';
     export default {
+        store,
         components: {
-            index
+            AppHeader
         }
     }
 </script>
+<style lang=less>
+    html {
+        background-color: #f5f5f5;
+    }
+    body {
+        margin: 0px;
+    }
+    .router-switch-enter {
+        transform: translateX(-500px);
+    }
+    .router-switch-leave-active {
+        transform: translateX(500px);
+    }
+    .router-switch-enter-active, .router-switch-leave-active{
+        position: absolute;
+        top: 87px;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        transition: all .5s;
+    }
+</style>
