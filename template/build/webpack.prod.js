@@ -24,7 +24,9 @@ module.exports = merge(common, {
         rules: utils.styleLoaders()
     },
     plugins: [
-        new CleanWebpackPlugin([config.prod.outputPath]),// 清除旧的产出
+        new CleanWebpackPlugin('output', {
+            root: path.join(__dirname, '..')
+        }),// 清除旧的产出
         new webpack.optimize.CommonsChunkPlugin({// 抽取node_modules下公共的模块
             name: 'vendor',
             minChunks: (module, count) => {

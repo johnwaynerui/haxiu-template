@@ -7,7 +7,7 @@ module.exports = {
         port: 3000
     },
     prod: {
-        outputPath: path.resolve(__dirname, './output/'),
+        outputPath: path.resolve(__dirname, '../output/'),
         outputPublicPath: 'https://gss0.bdstatic.com/5eR1dDebRNRTm2_p8IuM_a/',
         outputSubDirectory: 'resource/{{name}}/'
     }
