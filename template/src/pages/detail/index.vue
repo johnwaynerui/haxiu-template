@@ -2,7 +2,7 @@
     <div>
         <img src="../../assets/kanwo.gif">
         <p>哇偶！</p>
-        <router-link to="/webpack-demo/index">
+        <router-link to="/{{name}}/index">
             返回首页
         </router-link>
     </div>

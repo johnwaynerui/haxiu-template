@@ -5,7 +5,7 @@
         Hello, World!
     </p>
     <button @click.prevent="addCounter">点我计数器加1</button>
-    <router-link to='/webpack-demo/list'>
+    <router-link to='/{{name}}/list'>
         去列表页
     </router-link>
 </div>

@@ -3,7 +3,7 @@
         <img src="../../assets/woqu.gif">
         <p>什么情况！</p>
         <button @click.prevent="addCounter">点我也能让计数器加1</button>
-        <router-link to="/webpack-demo/detail">
+        <router-link to="/{{name}}/detail">
             去详情页
         </router-link>
     </div>
