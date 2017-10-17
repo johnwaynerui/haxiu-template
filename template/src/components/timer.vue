@@ -1,7 +1,11 @@
 <template>
 <p>
-    你在本页面已停留<span>
-    {{ time }}</span>
+    你在本页面已停留
+    {{{{vue-js}}}}
+        <span>
+        {{ time }}
+        </span>
+    {{{{/vue-js}}}}
     秒
 </p>
 </template>
