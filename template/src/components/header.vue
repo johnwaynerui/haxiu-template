@@ -2,7 +2,9 @@
     <div class="header">
         <img src="../assets/hao123_logo.png" alt="">
         <timer></timer>
+        {{{{vue-js}}}}
         <p>我是计数器{{$store.state.global.globalCounter}}</p>
+        {{{{/vue-js}}}}
     </div>
 </template>
 <script>
