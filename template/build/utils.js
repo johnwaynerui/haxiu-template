@@ -8,6 +8,10 @@ var cssLang = [{
     name: 'less',
     reg: /\.less$/,
     loader: 'less-loader'
+},{
+    name: 'stylus',
+    reg: /\.stylus$/,
+    loader: 'stylus-loader'
 }];
 function genLoaders(lang) {
     var loaders = ['css-loader', 'postcss-loader'];

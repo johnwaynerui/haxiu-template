@@ -56,7 +56,7 @@ module.exports = merge(common, {
         new HtmlWebpackPlugin({
             title: 'Code Splitting',
             template: './index.tpl',
-            filename: path.posix.join(config.prod.outputPath, 'template/page/webpack-demo/index.tpl'),
+            filename: path.posix.join(config.prod.outputPath, 'template/page/{{name}}/index.tpl'),
             minify: {
                 removeComments: true,
                 collapseWhitespace: true,
