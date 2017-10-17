@@ -24,10 +24,10 @@
         margin: 0px;
     }
     .router-switch-enter {
-        transform: translateX(-500px);
+        transform: translateX(100%);
     }
     .router-switch-leave-active {
-        transform: translateX(500px);
+        transform: translateX(-100%);
     }
     .router-switch-enter-active, .router-switch-leave-active{
         position: absolute;
@@ -35,6 +35,6 @@
         bottom: 0;
         left: 0;
         right: 0;
-        transition: all .5s;
+        transition: all .3s;
     }
 </style>
