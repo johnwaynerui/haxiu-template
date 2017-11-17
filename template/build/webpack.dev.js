@@ -37,7 +37,7 @@ module.exports = merge(common, {
         new webpack.optimize.CommonsChunkPlugin({
             name: 'vendor',
             minChunks: (module, count) => {
-                return module.resource && /\.js$/.test(module.resource) && module.resource.indexOf(path.join(__dirname, './node_modules')) === 0
+                return module.resource && /\.js$/.test(module.resource) && module.resource.indexOf(path.join(__dirname, '../node_modules')) === 0
             }
         }),
         // 抽取webpack runtime和manifest文件
@@ -46,7 +46,6 @@ module.exports = merge(common, {
             name: 'manifest',
             // 开发环境里不能使用chunkhash,webpack会报错
             // filename: 'manifest.[hash:7].js',
-            filename: 'manifest.js',
             chunks: ['vendor']
         }),
         new webpack.HotModuleReplacementPlugin(),

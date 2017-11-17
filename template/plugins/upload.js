@@ -7,9 +7,9 @@ const host = '{{host}}';
 const port = '{{port}}';
 const resourcePath = '{{resourcePath}}{{name}}';
 const templatePath = '{{templatePath}}{{name}}';
-const codeUrl = `${host}:${port}/v1/authorize`;
-const tokenUrl = `${host}:${port}/v1/validate`;
-const uploadUrl = `${host}:${port}/v1/upload`;
+const codeUrl = `http://${host}:${port}/v1/authorize`;
+const tokenUrl = `http://${host}:${port}/v1/validate`;
+const uploadUrl = `http://${host}:${port}/v1/upload`;
 let info = deployInfo() || {};
 // 只执行一遍的方法
 function once(fn, context) {
