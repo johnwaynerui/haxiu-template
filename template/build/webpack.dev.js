@@ -18,7 +18,7 @@ module.exports = merge(common, {
         // filename: 'js/[name].[chunkhash:7].js',
         // 这里在开发环境下所有的产出都不加hash(包括chunkhash和hash)，避免每次release时
         // 由于指纹的变化都会在开发机上产生多余的文件
-        filename: 'js/[name].js'
+        filename: 'js/[name].js',
         path: path.posix.join(__dirname, 'output'),
         publicPath: config.dev.outputPublicPath + config.dev.outputSubDirectory,
         chunkFilename: 'js/[name].async.js'

@@ -42,7 +42,7 @@ module.exports = {
                         limit: 10,
                         name: process.env.NODE_ENV === 'production'
                         ? `${config.prod.outputSubDirectory}img/[name].[hash:7].[ext]`
-                        : 'img/[name].[hash].[ext]'
+                        : 'img/[name].[ext]'
                     }
                 }
             },
@@ -53,8 +53,8 @@ module.exports = {
                     options: {
                         limit: 10,
                         name: process.env.NODE_ENV === 'production'
-                        ? `${config.prod.outputSubDirectory}fonts/[name].[hash].[ext]`
-                        : 'fonts/[name].[hash:7].[ext]'
+                        ? `${config.prod.outputSubDirectory}fonts/[name].[hash:7].[ext]`
+                        : 'fonts/[name].[ext]'
 
                     }
                 }
