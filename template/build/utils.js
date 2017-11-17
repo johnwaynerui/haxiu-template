@@ -14,7 +14,14 @@ var cssLang = [{
     loader: 'stylus-loader'
 }];
 function genLoaders(lang) {
-    var loaders = ['css-loader', 'postcss-loader'];
+    var loaders = ['css-loader',
+                    {
+                        loader: 'postcss-loader',
+                        options: {
+                            sourceMap: true
+                        }
+                    }
+                ];
     if (lang.name !== 'css') {
         loaders.push(lang.loader);
     }

@@ -53,7 +53,7 @@ module.exports = {
                     options: {
                         limit: 10,
                         name: process.env.NODE_ENV === 'production'
-                        ? `{config.prod.outputSubDirectory}fonts/[name].[hash].[ext]`
+                        ? `${config.prod.outputSubDirectory}fonts/[name].[hash].[ext]`
                         : 'fonts/[name].[hash:7].[ext]'
 
                     }

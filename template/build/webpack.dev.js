@@ -15,10 +15,14 @@ module.exports = merge(common, {
     output: {
         // 使用chunkhash可以避免改变一个chunk的时候引起其他chunk的改变
         // 跟hash的区别，详见:https://zhuanlan.zhihu.com/p/23595975
-        filename: 'js/[name].[chunkhash:7].js',
+        // filename: 'js/[name].[chunkhash:7].js',
+        // 这里在开发环境下所有的产出都不加hash(包括chunkhash和hash)，避免每次release时
+        // 由于指纹的变化都会在开发机上产生多余的文件
+        filename: 'js/[name].js'
         path: path.posix.join(__dirname, 'output'),
         publicPath: config.dev.outputPublicPath + config.dev.outputSubDirectory,
-        chunkFilename: 'js/[name].[chunkhash:7].async.js'
+        chunkFilename: 'js/[name].async.js'
+        // chunkFilename: 'js/[name].[chunkhash:7].async.js'
     },
     module: {
         rules: utils.styleLoaders()
@@ -41,7 +45,8 @@ module.exports = merge(common, {
         new webpack.optimize.CommonsChunkPlugin({
             name: 'manifest',
             // 开发环境里不能使用chunkhash,webpack会报错
-            filename: 'manifest.[hash:7].js',
+            // filename: 'manifest.[hash:7].js',
+            filename: 'manifest.js',
             chunks: ['vendor']
         }),
         new webpack.HotModuleReplacementPlugin(),

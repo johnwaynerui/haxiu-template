@@ -5,15 +5,30 @@ module.exports = {
             "required": false,
             "message": "where is your project gonna deploy?"
         },
-        "tplPort": {
+        "resourcePath": {
             "type": "string",
             "required": false,
-            "message": "port to receive tpl"
+            "message": "path to deploy resource"
         },
-        "resourcePort": {
+        "templatePath": {
             "type": "string",
             "required": false,
-            "message": "port to receive resource"
+            "message": "path to deploy template"
+        },
+        // "tplPort": {
+        //     "type": "string",
+        //     "required": false,
+        //     "message": "port to receive tpl"
+        // },
+        // "resourcePort": {
+        //     "type": "string",
+        //     "required": false,
+        //     "message": "port to receive resource"
+        // },
+        "port": {
+            "type": "string",
+            "required": false,
+            "message": "port to deploy"
         },
         "site": {
             "type": "string",

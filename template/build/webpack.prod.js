@@ -11,6 +11,7 @@ const common = require('./webpack.common.js');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 // 压缩代码
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
+const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const utils = require('./utils.js');
 const config = require('./config.js');
 module.exports = merge(common, {
@@ -25,12 +26,13 @@ module.exports = merge(common, {
     },
     plugins: [
         new CleanWebpackPlugin('output', {
-            root: path.join(__dirname, '..')
+            root: path.join(__dirname, '..'),
+            allowExtra: true
         }),// 清除旧的产出
         new webpack.optimize.CommonsChunkPlugin({// 抽取node_modules下公共的模块
             name: 'vendor',
             minChunks: (module, count) => {
-                return module.resource && /\.js$/.test(module.resource) && module.resource.indexOf(path.join(__dirname, './node_modules')) === 0
+                return module.resource && /\.js$/.test(module.resource) && module.resource.indexOf(path.join(__dirname, '../node_modules')) === 0
             }
         }),
         // 从上面抽取的vendor公共模块中再抽取公共模块
@@ -54,6 +56,11 @@ module.exports = merge(common, {
             // TODO:这里会把项目中的所有css提取到一个文件中，如何可以定制css文件呢？
             allChunks: true,
             filename: config.prod.outputSubDirectory + 'css/style.[contenthash:7].css'
+        }),
+        new OptimizeCssAssetsPlugin({
+            cssProcessor: require('cssnano'),
+            cssProcessorOptions: { discardComments: { removeAll: true } },
+            canPrint: true
         }),
         new HtmlWebpackPlugin({
             title: 'Code Splitting',
