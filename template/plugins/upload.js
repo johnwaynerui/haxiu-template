@@ -6,7 +6,7 @@ const fs = require('fs');
 const host = '{{host}}';
 const port = '{{port}}';
 const resourcePath = '{{resourcePath}}{{name}}';
-const templatePath = '{{templatePath}}{{name}}';
+const templatePath = '{{templatePath}}page/{{name}}';
 const codeUrl = `http://${host}:${port}/v1/authorize`;
 const tokenUrl = `http://${host}:${port}/v1/validate`;
 const uploadUrl = `http://${host}:${port}/v1/upload`;
@@ -175,14 +175,14 @@ function WebpackHttpDeployPlugin() {
         let assets = compilation.assets;
         upload(assets).then((res) => { // 全都发送成功
             next();
-            openBrowser('{{site}}/{{name}}');
+            openBrowser('{{site}}');
         }).catch((ret) => { // 发送失败
             if (ret.errno && ret.errno === 100302 || ret.errno === 100305) { // 需要验证
                 requireEmail().then(() => {
                     upload(assets)
                     .then(() => {// 终于发送成功啦
                         next();
-                        openBrowser('{{site}}/{{name}}');
+                        openBrowser('{{site}}');
                     })
                     .catch((res) => {// 彻底失败了
                         console.log(res)
