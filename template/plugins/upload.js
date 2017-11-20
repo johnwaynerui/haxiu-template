@@ -10,6 +10,7 @@ const templatePath = '{{templatePath}}page/{{name}}';
 const codeUrl = `http://${host}:${port}/v1/authorize`;
 const tokenUrl = `http://${host}:${port}/v1/validate`;
 const uploadUrl = `http://${host}:${port}/v1/upload`;
+let exists = fs.existsSync || path.existsSync;
 let info = deployInfo() || {};
 // 只执行一遍的方法
 function once(fn, context) {
@@ -25,14 +26,11 @@ function once(fn, context) {
 let openBrowser = once(function (url) {
     opn(url);
 });
-
-let exists = fs.existsSync || path.existsSync;
-
-let mkdir = function(dirPath) {
+function mkdir(dirPath) {
     if (exists(dirPath)) {
         return;
     }
-    dirPath.split('/').reduce((prev, next) => {
+    dirPath.split(path.delimiter).reduce((prev, next) => {
         if (prev && !exists(prev)) {
             fs.mkdirSync(prev)
         }
@@ -42,14 +40,34 @@ let mkdir = function(dirPath) {
         fs.mkdirSync(dirPath)
     }
 }
-let write = function(filePath, data) {
+function write(filePath, data) {
     if (!exists(filePath)) {
         mkdir(path.dirname(filePath))
     }
     fs.writeFileSync(filePath, data);
 }
+function getTokenPath() {// 为了兼容her, 参考fis里面取得临时目录的方法
+    let tmp = '';
+    let list = ['FIS_TEMP_DIR', 'LOCALAPPDATA', 'APPDATA', 'HOME'];
+    let i, len;
+    // let exists = fs.existsSync || path.existsSync;
+    for (i = 0, len = list.length; i< len; i++) {
+        if (tmp = process.env[list[i]]) {
+            break;
+        }
+    }
+    if (!tmp) {// 直接存在自己项目下面吧
+        return path.join(path.resolve(__dirname, '../'), 'deploy.json');
+    }
+    else if (!exists(path.join(tmp, '.her-tmp'))) {// 不存在.her-tmp
+        // 造一个.her-tmp
+        mkdir(path.join(tmp, '.her-tmp'));
+        return path.join(tmp, '.her-tmp', 'deploy.json')
+    }
+    return path.join(tmp, '.her-tmp', 'deploy.json');
+}
 function deployInfo(options) { // 把用户名和token写到项目根目录下
-    var conf = path.join(path.resolve(__dirname, '..'), 'token.json');
+    let conf = getTokenPath();
     if (arguments.length) { // setter
         return options && write(conf, JSON.stringify(options, null, 2));
     } else { // getter
